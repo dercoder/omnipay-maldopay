@@ -5,6 +5,7 @@ namespace Omnipay\MaldoPay;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\MaldoPay\Message\PurchaseRequest;
+use Omnipay\MaldoPay\Message\CompletePurchaseRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -91,5 +92,15 @@ class Gateway extends AbstractGateway
     public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\MaldoPay\Message\PurchaseRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return AbstractRequest|CompletePurchaseRequest
+     */
+    public function completePurchase(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\MaldoPay\Message\CompletePurchaseRequest', $parameters);
     }
 }

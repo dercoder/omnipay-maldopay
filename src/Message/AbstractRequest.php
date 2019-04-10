@@ -7,12 +7,12 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /**
      * @var string
      */
-    protected $liveEndpoint = 'https://api.maldopay.com/json/transactions';
+    protected $liveEndpoint = 'https://api.maldopay.com/json';
 
     /**
      * @var string
      */
-    protected $testEndpoint = 'https://api.maldopay.com/json/sandbox/transactions';
+    protected $testEndpoint = 'https://api.maldopay.com/json/sandbox';
 
     /**
      * @return int
@@ -29,7 +29,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function setClientId($value)
     {
-        return $this->setParameter('clientId', $value);
+        return $this->setParameter('clientId', (int)$value);
     }
 
     /**
@@ -47,7 +47,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function setBrandId($value)
     {
-        return $this->setParameter('brandId', $value);
+        return $this->setParameter('brandId', (int)$value);
     }
 
     /**
@@ -65,7 +65,35 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function setIntegrationId($value)
     {
-        return $this->setParameter('integrationId', $value);
+        return $this->setParameter('integrationId', (int)$value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getPendingUrl()
+    {
+        return $this->getParameter('pendingUrl');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setPendingUrl($value)
+    {
+        return $this->setParameter('pendingUrl', $value);
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return string
+     */
+    protected function createUri($path)
+    {
+        return sprintf('%s/%s/', $this->getEndpoint(), $path);
     }
 
     /**

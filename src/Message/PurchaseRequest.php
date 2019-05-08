@@ -94,17 +94,13 @@ class PurchaseRequest extends AuthenticationRequest
     {
         $uri = $this->createUri('transactions');
         $response = $this->httpClient
-            ->post($uri)
-            ->setBody(json_encode($data), 'application/json')
+            ->post($uri, null, [
+                'json'   => json_encode($data),
+                'apiKey' => $this->getApiKey(),
+            ])
             ->send();
 
-        $test = $this->httpClient
-            ->post($uri)
-            ->setBody(json_encode($data), 'application/json');
-
-        echo $test->getRawHeaders() . PHP_EOL;
-
-        echo (string)$test->getBody() . PHP_EOL . PHP_EOL;
+        echo(json_encode($data));
 
         echo($response->getBody(true));
         die();

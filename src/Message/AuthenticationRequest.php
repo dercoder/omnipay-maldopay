@@ -326,11 +326,11 @@ class AuthenticationRequest extends AbstractRequest
     {
         $uri = $this->createUri('auth');
         $response = $this->httpClient
-            ->post($uri, null, ['json' => json_encode($data)])
+            ->post($uri, null, [
+                'json'   => json_encode($data),
+                'apiKey' => $this->getApiKey(),
+            ])
             ->send();
-
-        echo($response->getBody(true));
-        die();
 
         $data = json_decode($response->getBody(true), true);
         return new AuthenticationResponse($this, $data);

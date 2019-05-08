@@ -71,6 +71,24 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /**
      * @return string
      */
+    public function getApiKey()
+    {
+        return $this->getParameter('apiKey');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setApiKey($value)
+    {
+        return $this->setParameter('apiKey', $value);
+    }
+
+    /**
+     * @return string
+     */
     public function getPendingUrl()
     {
         return $this->getParameter('pendingUrl');

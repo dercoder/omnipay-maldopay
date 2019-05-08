@@ -23,12 +23,30 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
+            'apiKey'        => '',
             'clientId'      => '',
             'brandId'       => '',
             'integrationId' => '',
-            'apiKey'        => '',
             'testMode'      => false,
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->getParameter('apiKey');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setApiKey($value)
+    {
+        return $this->setParameter('apiKey', $value);
     }
 
     /**
@@ -83,24 +101,6 @@ class Gateway extends AbstractGateway
     public function setIntegrationId($value)
     {
         return $this->setParameter('integrationId', $value);
-    }
-
-    /**
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return $this->getParameter('apiKey');
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function setApiKey($value)
-    {
-        return $this->setParameter('apiKey', $value);
     }
 
     /**

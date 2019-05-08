@@ -259,6 +259,7 @@ class AuthenticationRequest extends AbstractRequest
     public function getData()
     {
         $this->validate(
+            'apiKey',
             'clientId',
             'brandId',
             'firstName',

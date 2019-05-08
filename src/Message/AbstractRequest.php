@@ -15,6 +15,24 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     protected $testEndpoint = 'https://api.maldopay.com/json/sandbox';
 
     /**
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->getParameter('apiKey');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setApiKey($value)
+    {
+        return $this->setParameter('apiKey', $value);
+    }
+
+    /**
      * @return int
      */
     public function getClientId()
@@ -66,24 +84,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setIntegrationId($value)
     {
         return $this->setParameter('integrationId', (int)$value);
-    }
-
-    /**
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return $this->getParameter('apiKey');
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function setApiKey($value)
-    {
-        return $this->setParameter('apiKey', $value);
     }
 
     /**

@@ -50,6 +50,7 @@ class PurchaseRequest extends AuthenticationRequest
     public function getData()
     {
         $this->validate(
+            'apiKey',
             'clientId',
             'brandId',
             'integrationId',
